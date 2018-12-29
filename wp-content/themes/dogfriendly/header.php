@@ -3,11 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title>Home Page</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script> -->
     <?php wp_head(); ?>
 </head>
-<body>
-
+<?php 
+    // This just shows the class name of the page properly when you inspect the elements
+    if( is_front_page()):
+        $dogfr_classes = array( 'dogfr-class', 'my-class' );
+    else:
+        $dogfr_classes = array( 'no-dogfr-class' );
+    endif;
+?>
+<body <?php body_class( $dogfr_classes ); ?>>
+    <!-- This creates the navigation menu on the page -->
     <?php wp_nav_menu(array('theme_location'=>'primary')); ?>
